@@ -1,0 +1,89 @@
+---
+params:
+  symbol: "TSLA"
+title: Stock Price Import for `r params$symbol`
+output: html_document
+rmd_output_metadata:
+  rsc_output_files:
+    - "prices.csv"
+---
+
+`r if(Sys.getenv('CONNECT_SERVER') == '') { "ERROR: You must set the CONNECT_SERVER environment variable\n" }`
+`r if(Sys.getenv('CONNECT_API_KEY') == '') { "ERROR: You must set the CONNECT_API_KEY environment variable\n" }`
+`r if(Sys.getenv('CONNECT_API_KEY') == '' || Sys.getenv('CONNECT_SERVER') == '') { knitr::knit_exit() }`
+
+```{r, include=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(stringr)
+library(magrittr)
+library(quantmod)
+library(ggplot2)
+library(pins)
+
+start_time <- Sys.time()
+
+# Fetch all pricing data for symbol
+prices <- getSymbols(params$symbol,
+                     from = as.Date("2001-01-01"),
+                     to = Sys.Date(),
+                     src="yahoo",
+                     auto.assign = FALSE)
+  
+dates <- index(prices)
+  
+# Convert to format: symbol, date, open, close, high, low, volume
+prices %<>%
+  as_tibble %>%
+  mutate(symbol = params$symbol, date = dates) %>%
+  rename_at(
+    vars(starts_with(params$symbol)), 
+    list(~ str_replace(., paste(params$symbol, ".", sep = ""), ""))
+  ) %>%
+  rename_all(tolower) %>%
+  select(symbol, date, "open", "close", "high", "low", "volume")
+
+end_time <- Sys.time()
+```
+
+- **Started:** `r start_time`
+- **Completed:** `r end_time` (`r difftime(end_time, start_time, units = "secs")`s)
+- **Imported:** `r nrow(prices)` daily prices for **`r params$symbol`** from `r first(prices$date)` to `r last(prices$date)`
+
+```{r, echo=FALSE}
+prices %>% ggplot() +
+  aes(x = date, y = close) +
+  geom_line(color = "salmon") +
+  labs(x = "Date", y = "Closing Price") +
+  theme_minimal()
+```
+
+#### Data
+
+```{r, include=FALSE}
+write.csv(prices, "prices.csv", row.names=FALSE)
+
+# Pins will use CONNECT_API_KEY and CONNECT_SERVER by default,
+# but we are being explicit here anyway.
+board_register("rsconnect",
+               key = Sys.getenv("CONNECT_API_KEY"),
+               server = Sys.getenv("CONNECT_SERVER"))
+
+pin_name <- paste("prices-", params$symbol, sep = "")
+
+pin(prices, pin_name, board = "rsconnect")
+
+pin_meta <- pin_find(pin_name, board = "rsconnect")
+```
+
+- CSV: [prices.csv](prices.csv)
+- Pin: ``r pin_meta$name``
+
+**Note:** The pinned data can be fetched elsewhere using the following code
+
+    library(pins)
+    
+    board_register("rsconnect",
+                   key = Sys.getenv("CONNECT_API_KEY"),
+                   server = Sys.getenv("CONNECT_SERVER"))
+
+    prices <- pin_get('`r pin_meta$name`', board = "rsconnect")

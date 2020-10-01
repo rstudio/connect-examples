@@ -1,0 +1,232 @@
+- name: "stock-report"
+  type: "RMARKDOWN"
+  title: "Automated Stock Report"
+  description: >
+    This R Markdown document shows how to automate regular updates to a PDF. The
+    report code also generates a custom email, re-using the plots and putting
+    the results where stakeholders live - their inbox.
+  thumbnail: "thumbnail.jpg"
+  links:
+    - href: "https://rmarkdown.rstudio.com/"
+      text: "R Markdown Documentation"
+    - href: "https://rmarkdown.rstudio.com/gallery.html"
+      text: "Gallery of example R Markdown documents"
+    - href: "https://rmarkdown.rstudio.com/articles.html"
+      text: "Articles on R Markdown"
+  files:
+    - "README.md"
+    - "stock-report.Rproj"
+    - "stock-report.Rmd"
+    - "stock-report-email.Rmd"
+  requirements:
+    - "R version 3.4 or higher"
+
+- name: "portfolio-report"
+  type: "RMARKDOWN_PARAMS"
+  title: "Custom Portfolio Report"
+  description: >
+    This R Markdown document includes parameters, making it easier for
+    stakeholders to customize the report's assumptions and create their own
+    version. The main document serves as a standard base template, containing
+    your core code and analysis, so you don't have to copy, paste, and
+    republish.
+  thumbnail: "thumbnail.jpg"
+  links:
+    - href: "https://rmarkdown.rstudio.com/"
+      text: "R Markdown Documentation"
+    - href: "https://rmarkdown.rstudio.com/lesson-6.html"
+      text: "Using Parameters in R Markdown"
+    - href: "https://rmarkdown.rstudio.com/gallery.html"
+      text: "Gallery of example R Markdown documents"
+    - href: "https://rmarkdown.rstudio.com/articles.html"
+      text: "Articles on R Markdown"
+  files:
+    - "README.md"
+    - "portfolio-report.Rproj"
+    - "portfolio-report.Rmd"
+    - "portfolio-report-email.Rmd"
+    - "returns.rds"
+  requirements:
+    - "R version 3.4 or higher"
+
+- name: "portfolio-dashboard"
+  type: "SHINY_APP"
+  title: "Portfolio Dashboard"
+  description: >
+    A shiny application makes it easy to transform your analysis into an
+    interactive dashboard using R so users can ask and answer questions in
+    real-time, without having to touch any code.
+  thumbnail: "thumbnail.jpg"
+  links:
+    - href: "https://shiny.rstudio.com/"
+      text: "Shiny Documentation"
+    - href: "https://shiny.rstudio.com/gallery/"
+      text: "Gallery of example Shiny apps"
+    - href: "https://shiny.rstudio.com/articles/"
+      text: "Articles on Shiny"
+  files:
+    - "README.md"
+    - "sortino.Rproj"
+    - "app.R"
+    - "returns.rds"
+  requirements:
+    - "R version 3.4 or higher"
+
+- name: "stock-api-plumber"
+  type: "PLUMBER_API"
+  title: "Stock Pricing Service"
+  description: >
+    An API allows you to turn your models into production services that
+    other tools and teams can use. APIs are a great way for software engineering
+    teams to use your models without translating them into different languages.
+  thumbnail: "thumbnail.jpg"
+  links:
+    - href: "https://www.rplumber.io/"
+      text: "Plumber Introduction"
+    - href: "https://www.rplumber.io/docs/"
+      text: "Plumber Documentation"
+  files:
+    - "README.md"
+    - "stock-api-plumber.Rproj"
+    - "plumber.R"
+    - "stock_data.rds"
+  requirements:
+    - "R version 3.2 or higher"
+
+- name: "pins-tutorial"
+  type: "PIN"
+  title: "Pins Tutorial"
+  description: >
+    This RMarkdown document provides a follow-along example of creating a pin on
+    RStudio Connect, retrieving a pin from RStudio Connect, and publishing
+    content that uses a pin to RStudio Connect.
+  thumbnail: "thumbnail.jpg"
+  links:
+    - href: "https://solutions.rstudio.com/examples/apps/output-file-etl/"
+      text: "ETL Solutions on RStudio Connect"
+    - href: "https://rstudio.github.io/pins/"
+      text: "Pins Documentation"
+    - href: "https://docs.rstudio.com/connect/user/pins/"
+      text: "Connect User Guide: Pins"
+  files:
+    - "README.md"
+    - "pins-tutorial.Rproj"
+    - "pins-tutorial.Rmd"
+    - "images/add_env_vars.png"
+    - "images/connections_pane.png"
+    - "images/deploy_success.png"
+    - "images/env_var_error.png"
+    - "images/pinned_to_connect.png"
+    - "images/retrieval_code.png"
+    - "images/set_env_variable.png"
+  requirements:
+    - "R version 3.4 or higher"
+
+- name: "stock-report-jupyter"
+  type: "JUPYTER_NOTEBOOK"
+  title: "Stock Report"
+  description: >
+    This stock report is generated using Python and Jupyter Notebook. Stock
+    prices are populated from Quandl to generate a stock performance summary
+    intended to run daily after market close.
+  thumbnail: "thumbnail.jpg"
+  links:
+    - href: "https://jupyter.org/"
+      text: "Jupyter Homepage"
+    - href: "https://jupyter.org/documentation"
+      text: "Jupyter Documentation"
+    - href: "https://docs.rstudio.com/connect/user/jupyter-notebook/"
+      text: "Using Jupyter Notebooks in RStudio Connect"
+    - href: "https://docs.rstudio.com/rsconnect-jupyter/"
+      text: "User Guide for rsconnect_jupyter"
+  files:
+    - "README.md"
+    - "quandl-wiki-tsla.json.gz"
+    - "requirements.txt"
+    - "stock-report-jupyter.ipynb"
+  requirements:
+    - "Python version 3.5 or higher"
+
+- name: "stock-dashboard-python"
+  type: "PYTHON_DASH"
+  title: "Stock Pricing Dashboard"
+  description: >
+    A Dash application makes it easy to transform your analysis into an
+    interactive dashboard using Python so users can ask and answer questions
+    in real-time, without having to touch any code.
+  thumbnail: "thumbnail.jpg"
+  links:
+    - href: "https://dash.plotly.com/"
+      text: "Dash User Guide"
+    - href: "https://docs.rstudio.com/connect/user/dash/"
+      text: "Connect User Guide: Dash"
+  files:
+    - "README.md"
+    - "app.py"
+    - "requirements.txt"
+    - "prices.csv"
+  requirements:
+    - "Python 2 versions 2.7 or higher; Python 3 versions 3.5 or higher"
+
+- name: "top-5-income-share-streamlit"
+  type: "PYTHON_STREAMLIT"
+  title: "Top 5% income share"
+  description: >
+    A Streamlit application makes it easy to transform your analysis into an
+    interactive dashboard using Python so users can ask and answer questions
+    in real-time, without having to touch any code.
+  thumbnail: "thumbnail.jpg"
+  links:
+    - href: "https://docs.streamlit.io/en/latest/getting_started.html"
+      text: "Streamlit Getting Started Guide"
+    - href: "https://docs.rstudio.com/connect/user/streamlit/"
+      text: "RStudio Connect User Guide: Streamlit"
+  files:
+    - "README.md"
+    - "app.py"
+    - "requirements.txt"
+    - "data.csv"
+  requirements:
+    - "Python 3 versions 3.5 or higher"
+
+- name: "top-5-income-share-bokeh"
+  type: "PYTHON_BOKEH"
+  title: "Top 5% income share"
+  description: >
+    A Bokeh application makes it easy to transform your analysis into an
+    interactive dashboard using Python so users can ask and answer questions
+    in real-time, without having to touch any code.
+  thumbnail: "thumbnail.jpg"
+  links:
+    - href: "https://docs.bokeh.org/en/latest/index.html"
+      text: "Bokeh Documentation"
+    - href: "https://docs.rstudio.com/connect/user/bokeh/"
+      text: "RStudio Connect User Guide: Bokeh"
+  files:
+    - "README.md"
+    - "app.py"
+    - "requirements.txt"
+    - "data.csv"
+  requirements:
+    - "Python 3 versions 3.6 or higher"
+
+- name: "stock-api-python"
+  type: "PYTHON_API"
+  title: "Stock Pricing Service"
+  description: >
+    An API allows you to turn your models into production services that
+    other tools and teams can use. APIs are a great way for software engineering
+    teams to use your models without translating them into different languages.
+  thumbnail: "thumbnail.jpg"
+  links:
+    - href: "https://palletsprojects.com/p/flask/"
+      text: "Flask Introduction"
+    - href: "https://flask.palletsprojects.com/en/1.1.x/"
+      text: "Flask Documentation"
+  files:
+    - "README.md"
+    - "app.py"
+    - "requirements.txt"
+    - "prices.csv"
+  requirements:
+    - "Python 2 versions 2.7 or higher; Python 3 versions 3.5 or higher"
