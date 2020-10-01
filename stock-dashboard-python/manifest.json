@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "metadata": {
+    "appmode": "python-dash",
+    "entrypoint": "app"
+  },
+  "locale": "en_US.UTF-8",
+  "python": {
+    "version": "3.7.3",
+    "package_manager": {
+      "name": "pip",
+      "version": "19.3.1",
+      "package_file": "requirements.txt"
+    }
+  },
+  "files": {
+    "requirements.txt": {
+      "checksum": "e1275859384a6ba0a766eabc3cbf880b"
+    },
+    "README.md": {
+      "checksum": "6b29d0780467b2edc2409839b35d53bd"
+    },
+    "app.py": {
+      "checksum": "581d1ad10600893591e4827cf052562f"
+    },
+    "prices.csv": {
+      "checksum": "e0bc27e3dd358c360863807e09079985"
+    },
+    "thumbnail.jpg": {
+      "checksum": "3691931bc6c8ff0b84317140edbd4b8b"
+    }
+  }
+}
