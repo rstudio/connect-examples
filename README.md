@@ -12,7 +12,7 @@ Each example includes a manifest file, to deploy the examples to RStudio Connect
 
 2. Enter the repository URL: `https://github.com/rstudio/connect-examples`
 
-3. Select *master* from the branch drop down
+3. Select *main* from the branch drop down
 
 4. Pick the corresponding folder for the example you want to deploy and enter a name
 
