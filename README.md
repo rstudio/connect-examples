@@ -16,7 +16,7 @@ Each example includes a manifest file, to deploy the examples to RStudio Connect
 
 4. Pick the corresponding folder for the example you want to deploy and enter a name
 
-Note that the `pins-tutorial` example will require setting an API key before the report will render correctly. All other content should deploy and render automatically.
+Note that the `pins-tutorial` and `stock-import` examples will require setting an API key before the reports will render correctly. All other content should deploy and render or run automatically.
 
 
 
